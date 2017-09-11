@@ -1,48 +1,55 @@
-Homework 1 - [Your team name here]
+Homework 1 - [Zeren Li]
 ========================================================
+  
+  ### Task 1 - Implementation
+  
+  Use this section to implement the fizzbuzz function.
 
-### Task 1 - Implementation
-
-<!--
-Use this section to implement the fizzbuzz function.
 
 This should include a short write up describing your approach
 to implementing the function. Note that both code formating / style
 and your writeup matter for your overall grade.
--->
+
+I use a `for` loop to build this small function. Within the loop, I use `if` and `else if` functions to specify the output in different conditions. First, I use `if` and `if else` functions to detect if the input contains non numeric items. If year, the function will stop and an error message will be shown on the screen, telling the user the type of their input items are not integers. After that, I did
+
 
 ```{r}
-fizzbuzz = function(v)
-{
-
+fizzbuzz = function(v) {
+  for  (i in seq_along(v)) {
+    if (typeof(v[i])=="character" ) {stop("The input contains characters.")}  ## error message 1
+    else if (is.infinite(v[i]) == T) {stop("The input contains infinite")}  ## error message 2
+    else if (as.numeric(v[i]) <0 ) {stop("The input contains number smaller than zero")}  ## error message 3
+    else  if (v[i] %% 3  == 0 & i %% 5  == 0 ){print("fizzbuzz") }
+    else if(v[i] %% 3 == 0){print("fizz")}
+    else if (v[i] %% 5  == 0){print("buzz")}
+    else  print(v[i])
+  }
 }
+
 ```
 
 ### Task 2 - Validation
 
 <!--
-Use this section to show the output of your 
+  Use this section to show the output of your 
 fizzbuzz function for various inputs
 
 No writeup is necessary for this section.
 -->
-
-```{r}
+  
+```{r,error=T}
 fizzbuzz(1)
 fizzbuzz(3)
 fizzbuzz(5)
 fizzbuzz(15)
-
 fizzbuzz(9:15)
 fizzbuzz(15:9)
 
 fizzbuzz(-1)
 fizzbuzz(-3)
 fizzbuzz(-5)
-
 fizzbuzz(Inf)
 fizzbuzz(-Inf)
-
 fizzbuzz("A")
 fizzbuzz(1.5)
 fizzbuzz(1i)
